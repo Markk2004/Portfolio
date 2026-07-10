@@ -16,9 +16,51 @@
 - `InvestingNew`: Next.js/TypeScript project with Vercel deployment — https://github.com/Markk2004/InvestingNew
 - `investerBack`: PHP backend repository — https://github.com/Markk2004/investerBack
 
+Project descriptions must use only facts verified from the repository metadata/README; if a feature is not verifiable, describe the project at a high level or omit the claim.
+
 ชื่อที่ใช้ใน profile จาก git metadata คือ `Juggit Khunkhaw`. `Portfolio` และ `PortBack` เป็น repository เป้าหมายที่ยังมีเพียง `.gitkeep`; ห้ามสร้างข้อมูลผลงานปลอมจากสอง repository นี้
 
 ## User Experience and Visual Design
+
+## Professional Interactive UI Extension
+
+การอัปเกรดนี้เพิ่ม visual polish และ interaction ให้ portfolio โดยยังคง static-first architecture และไม่เพิ่มข้อมูลที่ไม่มีแหล่งยืนยัน
+
+### Theme and background
+
+- ใช้ dark mode 100% ด้วยพื้นหลัง black/deep charcoal และ surface ที่เข้มกว่าเล็กน้อย
+- เพิ่ม grid pattern แบบบางด้วย CSS `linear-gradient` อยู่ชั้นหลังสุด เพื่อสื่อถึง engineering/terminal aesthetic
+- ใช้ radial glow แบบ subtle เฉพาะ Hero และ ID Card; ห้ามทำให้ contrast ของข้อความลดลง
+- Card ใช้ glass-like surface โปร่งแสงเล็กน้อย, thin border, rounded corners และ spacing scale เดียวกันทั้งเว็บ
+
+### Typography and content motion
+
+- ใช้ display sans-serif ที่หนา/กว้างสำหรับ Hero heading และ readable sans-serif สำหรับ body copy
+- ใช้ typing effect ใต้ตำแหน่งงาน สลับข้อความที่มีข้อมูลจริงและไม่เกิน 2–3 role phrases; หยุด animation เมื่อ `prefers-reduced-motion` เป็นจริง
+- ใช้ reveal-on-scroll แบบ fade-up สำหรับ section/card โดยใช้ Intersection Observer หรือ CSS utility ขนาดเล็ก ไม่เพิ่ม animation framework เพียงเพื่อ reveal
+
+### Interactive 3D ID Card
+
+- Desktop pointer devices ใช้ React Three Fiber + Three.js แสดง ID Card พร้อมสายคล้อง, spring-like mouse-follow tilt และ reflective highlight
+- ใช้ custom lightweight spring interpolation; ไม่เพิ่ม physics engine เต็มรูปแบบ เพราะไม่จำเป็นต่อ portfolio landing page
+- Lazy-load 3D scene และ cap `devicePixelRatio`; ไม่ให้ 3D block initial text content หรือ contact form
+- Mobile, touch device และ `prefers-reduced-motion` ใช้ CSS 3D/static card fallback โดยไม่โหลดหรือไม่เปิด animation loop ของ Three.js
+- 3D canvas ต้องมี accessible text alternative ที่แสดงชื่อ, role และ CTA เดียวกับ Hero
+
+### Cursor and navigation
+
+- Custom cursor เป็นวงกลมเล็กพร้อม outer ring เฉพาะอุปกรณ์ที่มี fine pointer
+- ปิด custom cursor บน touch/coarse pointer และ `prefers-reduced-motion`; ห้ามซ่อน native cursor จนทำให้ใช้งานไม่ได้
+- Sticky navbar มี Home, About, Portfolio และ Contact, พร้อม active section state และ smooth scroll
+- Mobile menu ต้อง keyboard-operable, มี `aria-expanded`, `aria-controls` และปิดหลังเลือก section
+
+### Portfolio tabs
+
+- รวม content เป็น tabs: `Projects`, `Certificates`, `Tech Stack`
+- `Projects` แสดง 3 curated repositories ที่ยืนยันจาก GitHub
+- `Tech Stack` แสดง real technology logos ที่มีอยู่ใน frontend และชื่อเทคโนโลยีเป็น text เสมอ
+- `Certificates` แสดง accessible empty state เช่น “Certificates will be added soon”; ห้ามสร้าง certificate หรือ issuer ที่ไม่มีข้อมูลจริง
+- Tabs ใช้ keyboard interaction ตาม tab pattern, มี active indicator และ transition ที่หยุดได้เมื่อ reduced motion; URL ไม่เปลี่ยนเมื่อสลับ tab
 
 - Dark developer portfolio: charcoal background `#0B0F14`, surface `#111827`, off-white text, cyan/blue accent
 - Header: ชื่อหรือ logo, links ไปยัง About, Skills, Projects, Contact และ language switcher TH/EN
@@ -33,7 +75,7 @@
 - Images: project images อยู่ใน `front/public/images/projects` หรือใช้ URL ที่กำหนดใน content config; ทุกภาพมี alt text สองภาษาและ fallback placeholder
 - Page entry: แสดง Short branded intro ก่อนเข้า Hero โดยใช้ข้อความ `WELCOME TO MY PORTFOLIO`, ชื่อ/โลโก้ `Juggit Khunkhaw`, dark surface และ cyan/blue accent
 - Welcome intro ใช้เวลา 1–1.5 วินาที แล้ว fade/slide เข้า Hero; เป็น visual transition ไม่รอ API และไม่ทำให้ data loading ช้าลง
-- ใช้ CSS animation เป็นหลัก ไม่เพิ่ม animation dependency และรองรับ `prefers-reduced-motion` ด้วย transition สั้นหรือข้าม animation
+- ใช้ CSS animation สำหรับ intro/reveal/typing/cursor เป็นหลัก; 3D ใช้เฉพาะ R3F/Three.js ตาม subsection ของ ID Card และทุก animation รองรับ `prefers-reduced-motion` ด้วย transition สั้นหรือข้าม animation
 
 ## Internationalization
 
@@ -60,6 +102,8 @@ Browser
 
 Next.js ใช้ JavaScript และ Tailwind CSS รับผิดชอบ layout, responsive UI, dark theme, locale switching, project/skill presentation และการเรียก Laravel API. Portfolio content ใช้ static-first configuration เพื่อ performance/SEO และไม่ scrape GitHub ใน runtime
 
+Interactive UI แยกเป็น focused client components: `InteractiveIdCard`, `TypingRole`, `CustomCursor`, `Reveal`, และ `PortfolioTabs`. 3D scene ต้องถูกโหลดแบบ client-only/lazy และต้องมี CSS fallback ที่ไม่พึ่ง Three.js
+
 ### Backend
 
 Laravel เป็น API ขนาดเล็กสำหรับ `POST /api/contact` และ persistence เท่านั้น. ไม่มี authentication, admin dashboard หรือ runtime GitHub integration ใน scope นี้
@@ -71,6 +115,22 @@ Laravel เป็น API ขนาดเล็กสำหรับ `POST /api/c
 3. User submit contact form; frontend validate และส่ง JSON ไป Laravel
 4. Laravel validate ซ้ำ, normalize input, apply rate limit, persist message แล้วคืน success/error JSON
 5. Frontend reset form เมื่อสำเร็จ หรือคงค่าฟอร์มไว้เมื่อผิดพลาด
+
+### Interactive UI data flow
+
+```text
+Pointer/scroll/input
+  -> isolated client interaction component
+      -> CSS transform or lazy R3F scene
+          -> visual-only state update
+              -> accessible static content remains available
+```
+
+- Cursor and reveal state must not mutate portfolio content data
+- Tab state selects one of three local content panels and does not call the backend
+- Typing state cycles only through localized role phrases
+- 3D card consumes the same profile name/role data as Hero and exposes a text alternative
+- Contact form remains independent from all visual effects; disabling motion must not disable submission
 
 ### Welcome intro flow
 
@@ -126,6 +186,12 @@ Production ใช้ MySQL 8.0+. Local/test ใช้ SQLite ได้ แต่
 ## Testing and Acceptance Criteria
 
 - Landing page render ได้ทั้ง `th` และ `en` และ switch ภาษาได้โดยไม่เสีย layout
+- Background มี grid pattern ที่ subtle และ contrast/อ่านง่ายบน dark theme
+- Hero มี typing role effect ที่หยุดได้เมื่อ reduced motion และแสดง static phrase ที่อ่านได้เสมอ
+- Desktop pointer แสดง interactive 3D ID Card พร้อมสายคล้อง, mouse-follow tilt และ highlight; touch/mobile/reduced-motion ใช้ fallback โดยไม่เสียข้อมูลหรือ CTA
+- Custom cursor แสดงเฉพาะ fine pointer และไม่รบกวน native cursor, keyboard focus หรือ screen reader
+- Sticky navigation ทำงานบน desktop/mobile และ active section state ไม่ทำให้ anchor navigation เสีย
+- Portfolio tabs แสดง Projects, Certificates empty state และ Tech Stack พร้อม keyboard behavior และ real logos
 - เปิดหน้าเว็บแล้วเห็น branded welcome intro เต็ม viewport ด้วยข้อความ `WELCOME TO MY PORTFOLIO` และชื่อ `Juggit Khunkhaw`
 - Welcome intro จบภายใน 1–1.5 วินาที แล้วเข้า Hero ได้โดยไม่รอ API และไม่ทำให้ main content สูญเสีย keyboard focus
 - `prefers-reduced-motion` ลดหรือข้าม animation ได้ และ intro ไม่ loop เมื่อ component re-render
@@ -138,7 +204,8 @@ Production ใช้ MySQL 8.0+. Local/test ใช้ SQLite ได้ แต่
 - Rate limit ป้องกัน request เกิน 5 ครั้งต่อนาทีต่อ IP
 - CORS, secrets, error masking และ security headers ถูกตรวจด้วย automated tests หรือ integration checks
 - Frontend build/lint และ backend tests ผ่านก่อน handoff ให้ Gemini
+- ตรวจ performance ด้วย production build และยืนยันว่า mobile/reduced-motion ไม่โหลดหรือไม่รัน 3D animation loop
 
 ## Scope Boundaries
 
-ไม่รวม admin dashboard, authentication, CMS editor, email notification, GitHub runtime scraping, analytics, comments, blog และ dynamic repository discovery. หากต้องการสิ่งเหล่านี้ให้แยกเป็น phase/spec ใหม่
+ไม่รวม admin dashboard, authentication, CMS editor, email notification, GitHub runtime scraping, analytics, comments, blog, dynamic repository discovery, full physics engine, และ certificate data ที่ไม่มีแหล่งยืนยัน. หากต้องการสิ่งเหล่านี้ให้แยกเป็น phase/spec ใหม่
