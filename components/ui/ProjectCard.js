@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { getTechIcon } from '@/lib/content/tech-icons';
 
-export default function ProjectCard({ project, content }) {
+export default function ProjectCard({ project, content, onViewDetails }) {
   const [imgSrc, setImgSrc] = useState(project.image || `/images/projects/${project.slug}.png`);
 
   return (
@@ -53,11 +53,18 @@ export default function ProjectCard({ project, content }) {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-4">
+            <button
+              type="button"
+              onClick={() => onViewDetails(project.slug)}
+              className="inline-flex min-h-11 items-center rounded-lg border border-slate-700 bg-[#05070A] px-4 text-sm font-semibold text-gray-300 transition-colors hover:border-white hover:text-white"
+            >
+              {content.ui.common.viewDetails}
+            </button>
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-gray-300 transition-colors hover:text-white"
+              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-gray-400 transition-colors hover:text-white"
               aria-label={`${content.ui.common.viewGithub} for ${project.title}`}
             >
               <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
