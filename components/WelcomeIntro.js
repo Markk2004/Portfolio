@@ -37,7 +37,7 @@ export default function WelcomeIntro({ onComplete }) {
       className={`welcome-intro fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#05070A] text-white transition-all duration-500 ease-out ${exiting ? 'opacity-0 translate-y-[-8px]' : 'opacity-100'}`}
     >
       <div className="text-center px-4">
-        <h1 className="text-xs md:text-sm font-semibold tracking-[0.3em] text-[#06B6D4] uppercase mb-3">
+        <h1 className="text-xs md:text-sm font-semibold tracking-[0.3em] text-gray-400 uppercase mb-3">
           WELCOME TO MY PORTFOLIO
         </h1>
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
@@ -46,7 +46,7 @@ export default function WelcomeIntro({ onComplete }) {
         {/* Progress bar */}
         <div className="w-32 h-[3px] bg-gray-800 mx-auto mt-6 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6] origin-left"
+            className="h-full bg-white origin-left"
             style={{
               animation: 'progress-bar 1.2s linear forwards'
             }}

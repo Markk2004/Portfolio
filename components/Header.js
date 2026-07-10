@@ -28,8 +28,8 @@ export default function Header({ locale, content, onLocaleChange }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-700/70 bg-[#05070A]/88 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4 md:px-8">
-        <a href="#hero" className="inline-flex min-h-11 items-center text-xl font-bold text-white transition-colors hover:text-[#06B6D4]">
-          JK<span className="text-[#06B6D4]">.</span>
+        <a href="#hero" className="inline-flex min-h-11 items-center text-xl font-bold text-white transition-colors hover:text-white">
+          JK<span className="text-gray-400">.</span>
         </a>
 
         <nav className="hidden md:flex items-center space-x-8">
@@ -38,7 +38,7 @@ export default function Header({ locale, content, onLocaleChange }) {
               key={item.href}
               href={item.href}
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`inline-flex min-h-11 items-center text-sm font-medium transition-colors ${activeSection === item.id ? 'text-cyan-300' : 'text-gray-300 hover:text-white'}`}
+              className={`inline-flex min-h-11 items-center text-sm font-medium transition-colors ${activeSection === item.id ? 'text-white font-bold underline decoration-2 underline-offset-4' : 'text-gray-400 hover:text-white'}`}
             >
               {item.label}
             </a>
@@ -84,7 +84,7 @@ export default function Header({ locale, content, onLocaleChange }) {
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`flex min-h-11 items-center rounded-lg px-3 text-base font-semibold transition-all ${activeSection === item.id ? 'bg-[#111827] text-cyan-300' : 'text-gray-300 hover:bg-[#111827] hover:text-white'}`}
+              className={`flex min-h-11 items-center rounded-lg px-3 text-base font-semibold transition-all ${activeSection === item.id ? 'bg-slate-900 text-white font-bold' : 'text-gray-400 hover:bg-slate-900 hover:text-white'}`}
             >
               {item.label}
             </a>

@@ -18,9 +18,9 @@ export default function Contact({ locale, content }) {
         <div className="mx-auto mb-10 grid max-w-2xl gap-6 sm:grid-cols-2">
           <a 
             href="tel:082-6610469"
-            className="glass-card flex min-h-44 flex-col items-center rounded-lg p-8 text-center transition duration-200 hover:-translate-y-1 hover:border-[#06B6D4]/50"
+            className="glass-card flex min-h-44 flex-col items-center rounded-lg p-8 text-center transition duration-200 hover:-translate-y-1 hover:border-white/40"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#0B0F14] text-[#06B6D4]">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#05070A] text-white border border-slate-800">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -33,9 +33,9 @@ export default function Contact({ locale, content }) {
 
           <a 
             href="mailto:jiggtkk@gmail.com"
-            className="glass-card flex min-h-44 flex-col items-center rounded-lg p-8 text-center transition duration-200 hover:-translate-y-1 hover:border-[#06B6D4]/50"
+            className="glass-card flex min-h-44 flex-col items-center rounded-lg p-8 text-center transition duration-200 hover:-translate-y-1 hover:border-white/40"
           >
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#0B0F14] text-[#06B6D4]">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#05070A] text-white border border-slate-800">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>

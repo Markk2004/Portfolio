@@ -52,7 +52,7 @@ export default function PortfolioTabs({ projects, skills, content }) {
                 if (event.key === 'Home') { event.preventDefault(); selectTab(tabs[0]); tabRefs.current[tabs[0]]?.focus(); }
                 if (event.key === 'End') { event.preventDefault(); selectTab(tabs[tabs.length - 1]); tabRefs.current[tabs[tabs.length - 1]]?.focus(); }
               }}
-              className={`min-h-11 rounded-lg px-4 text-sm font-semibold transition duration-200 ${activeTab === tab ? 'bg-cyan-400/15 text-cyan-100 shadow-[inset_0_0_0_1px_rgba(103,232,249,0.28)]' : 'text-slate-400 hover:bg-slate-900 hover:text-white'}`}
+              className={`min-h-11 rounded-lg px-4 text-sm font-semibold transition duration-200 ${activeTab === tab ? 'bg-white/10 text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]' : 'text-slate-400 hover:bg-slate-900 hover:text-white'}`}
             >
               {labels[tab]}
             </button>

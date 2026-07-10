@@ -8,7 +8,7 @@ export default function ProjectCard({ project, content }) {
   const [imgSrc, setImgSrc] = useState(project.image || `/images/projects/${project.slug}.png`);
 
   return (
-    <article className="glass-card flex h-full flex-col overflow-hidden rounded-lg transition duration-200 hover:-translate-y-1 hover:border-cyan-300/40">
+    <article className="glass-card flex h-full flex-col overflow-hidden rounded-lg transition duration-200 hover:-translate-y-1 hover:border-white/40">
       <div className="relative aspect-video w-full overflow-hidden border-b border-slate-800 bg-[#05070A]">
         <Image
           src={imgSrc}
@@ -33,7 +33,7 @@ export default function ProjectCard({ project, content }) {
               return (
                 <span
                   key={tech}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-[#05070A] px-2.5 py-1 text-[10px] font-medium text-[#67E8F9]"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-[#05070A] px-2.5 py-1 text-[10px] font-medium text-gray-300"
                 >
                   {iconUrl && (
                     <Image
@@ -71,7 +71,7 @@ export default function ProjectCard({ project, content }) {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-[#67E8F9] transition-colors hover:text-white"
+                className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-white transition-colors hover:underline"
                 aria-label={`${content.ui.common.liveDemo} for ${project.title}`}
               >
                 <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
