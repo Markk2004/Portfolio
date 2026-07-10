@@ -8,28 +8,35 @@ export default function ProjectCard({ project, content, onViewDetails }) {
   const [imgSrc, setImgSrc] = useState(project.image || `/images/projects/${project.slug}.png`);
 
   return (
-    <article className="glass-card flex h-full flex-col overflow-hidden rounded-lg transition duration-200 hover:-translate-y-1 hover:border-white/40">
+    <article className="glass-card group relative flex h-full flex-col overflow-hidden rounded-xl transition duration-300 hover:-translate-y-1.5 hover:border-white/30 hover:shadow-xl hover:shadow-black/40 cursor-pointer">
+      {/* Entire card is a button — links inside use stopPropagation */}
+      <button
+        type="button"
+        className="absolute inset-0 z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-xl"
+        style={{ position: 'absolute', zIndex: 10 }}
+        aria-label={`${content.ui.common.viewDetails}: ${project.title}`}
+        onClick={() => onViewDetails(project.slug)}
+      />
+
       <div className="relative aspect-video w-full overflow-hidden border-b border-slate-800 bg-[#05070A]">
         <Image
           src={imgSrc}
           alt={project.imageAlt || project.title}
           fill
           sizes="(max-width: 768px) 100vw, 320px"
-          className="object-cover"
+          className="object-cover transition duration-500 group-hover:scale-105"
           onError={() => setImgSrc('/images/projects/project-placeholder.svg')}
         />
       </div>
 
       <div className="flex flex-col flex-1 p-6">
-        <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="mb-4 text-sm leading-6 text-gray-300">{project.summary}</p>
-        <p className="mb-6 line-clamp-4 text-xs leading-6 text-gray-400">{project.description}</p>
-        
-        <div className="mt-auto space-y-6">
+        <h3 className="text-lg font-bold text-white mb-2 leading-tight">{project.title}</h3>
+        <p className="mb-5 text-sm leading-6 text-gray-300">{project.summary}</p>
+
+        <div className="mt-auto space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tech) => {
-              const normalized = tech.toLowerCase();
-              const iconUrl = getTechIcon(normalized);
+              const iconUrl = getTechIcon(tech.toLowerCase());
               return (
                 <span
                   key={tech}
@@ -52,39 +59,35 @@ export default function ProjectCard({ project, content, onViewDetails }) {
             })}
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-4">
-            <button
-              type="button"
-              onClick={() => onViewDetails(project.slug)}
-              className="inline-flex min-h-11 items-center rounded-lg border border-slate-700 bg-[#05070A] px-4 text-sm font-semibold text-gray-300 transition-colors hover:border-white hover:text-white"
-            >
-              {content.ui.common.viewDetails}
-            </button>
+          {/* External links sit above the invisible button overlay via z-20 */}
+          <div className="relative z-20 flex items-center gap-4 border-t border-slate-800 pt-4">
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-gray-400 transition-colors hover:text-white"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 transition-colors hover:text-white"
               aria-label={`${content.ui.common.viewGithub} for ${project.title}`}
+              onClick={(e) => e.stopPropagation()}
             >
-              <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
               </svg>
-              {content.ui.common.viewGithub}
+              GitHub
             </a>
-            
+
             {project.demoUrl && (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-white transition-colors hover:underline"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-white transition-colors hover:text-gray-300"
                 aria-label={`${content.ui.common.liveDemo} for ${project.title}`}
+                onClick={(e) => e.stopPropagation()}
               >
-                <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-                {content.ui.common.liveDemo}
+                Live Demo
               </a>
             )}
           </div>
