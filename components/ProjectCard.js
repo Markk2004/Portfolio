@@ -39,9 +39,12 @@ export default function ProjectCard({ project, content }) {
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-medium rounded bg-[#0B0F14] text-[#06B6D4] border border-gray-850"
                 >
                   {iconUrl && (
-                    <img
+                    <Image
                       src={iconUrl}
                       alt=""
+                      width={12}
+                      height={12}
+                      unoptimized
                       className="h-3 w-3 object-contain"
                       aria-hidden="true"
                     />

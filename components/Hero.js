@@ -1,5 +1,6 @@
 import TypingRole from '@/components/TypingRole';
 import { roles } from '@/lib/roles';
+import InteractiveIdCard from '@/components/InteractiveIdCard';
 
 export default function Hero({ content }) {
   return (
@@ -8,7 +9,8 @@ export default function Hero({ content }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#06B6D415,transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,#3B82F615,transparent_50%)]" />
 
-      <div className="relative mx-auto max-w-5xl text-center z-10">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 text-center lg:grid-cols-[1.1fr_0.9fr] lg:text-left">
+        <div>
         <p className="text-sm font-semibold tracking-[0.25em] text-[#06B6D4] uppercase mb-4">
           {content.hero.greeting}
         </p>
@@ -37,6 +39,10 @@ export default function Hero({ content }) {
           >
             {content.hero.ctaContact}
           </a>
+        </div>
+        </div>
+        <div className="mx-auto flex w-full justify-center lg:justify-end">
+          <InteractiveIdCard profile={content.hero.name} role={content.hero.title} ctaHref="#contact" />
         </div>
       </div>
     </section>

@@ -5,8 +5,7 @@ import WelcomeIntro from '@/components/WelcomeIntro';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
+import PortfolioTabs from '@/components/PortfolioTabs';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
@@ -22,10 +21,12 @@ export default function Home() {
   const completeIntro = useCallback(() => setIntroComplete(true), []);
 
   useEffect(() => {
+    document.documentElement.lang = locale;
+    document.title = content.metadata.title;
     if (introComplete && mainHeadingRef.current) {
       mainHeadingRef.current.focus();
     }
-  }, [introComplete]);
+  }, [content.metadata.title, introComplete, locale]);
 
   return (
     <>
@@ -45,8 +46,7 @@ export default function Home() {
             <Hero content={content} />
           </div>
           <Reveal><About content={content} /></Reveal>
-          <Reveal delay={80}><Skills skills={content.skills} content={content} /></Reveal>
-          <Reveal delay={120}><Projects projects={content.projects} content={content} /></Reveal>
+          <Reveal delay={80}><PortfolioTabs skills={content.skills} projects={content.projects} content={content} /></Reveal>
           <Reveal delay={160}><Contact locale={locale} content={content} /></Reveal>
         </main>
 

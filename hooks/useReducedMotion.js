@@ -6,6 +6,7 @@ export default function useReducedMotion() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    if (!window.matchMedia) return undefined;
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReducedMotion(mediaQuery.matches);
     update();

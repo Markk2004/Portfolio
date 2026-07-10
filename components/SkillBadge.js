@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { getTechIcon } from '@/lib/tech-icons';
 
 export default function SkillBadge({ skill }) {
@@ -17,9 +18,12 @@ export default function SkillBadge({ skill }) {
             {skill.name.substring(0, 2).toUpperCase()}
           </span>
         ) : (
-          <img
+          <Image
             src={iconUrl}
             alt={`${skill.name} logo`}
+            width={24}
+            height={24}
+            unoptimized
             className="h-6 w-6 object-contain"
             onError={() => setImgError(true)}
           />
