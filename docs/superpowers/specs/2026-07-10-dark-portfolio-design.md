@@ -185,6 +185,17 @@ Production ใช้ MySQL 8.0+. Local/test ใช้ SQLite ได้ แต่
 
 ## Testing and Acceptance Criteria
 
+## Documentation Contract
+
+เอกสารต้องทำให้คนหรือ agent ที่เปิด workspace ครั้งแรกเข้าใจ architecture, data flow, local setup และขอบเขตระบบโดยไม่ต้องอ่าน source code ก่อน
+
+- `E:\portfolio\CONTEXT.md`: single source of truth ระดับ workspace อธิบายความสัมพันธ์ระหว่าง `front` และ `back`, request flow ของ contact form, locale flow, welcome/interactive UI flow, database schema summary, environment variables, security boundaries, commands ที่ใช้ตรวจ และข้อห้ามเรื่องข้อมูล project/certificate ที่ไม่มีแหล่งยืนยัน
+- `E:\portfolio\README.md`: quickstart ระดับ workspace มี project purpose, prerequisites, folder map, startup commands สำหรับ frontend/backend, database migration, test/build commands, local URLs, links ไป README ราย repo และ link ไป GitHub source projects
+- `E:\portfolio\front\README.md`: frontend-specific setup, Next.js/Tailwind structure, locale/content model, interactive UI fallback rules, and frontend verification commands
+- `E:\portfolio\back\README.md`: backend-specific setup, Laravel API contract, MySQL/SQLite configuration, migration/test commands, CORS/rate-limit/security behavior
+- เอกสารทุกไฟล์ต้องระบุว่า `pending.md` เป็น implementation plan และห้ามแก้ code โดยข้าม acceptance checks
+- ห้ามใส่ secret, password, certificate claim หรือ project capability ที่ตรวจสอบไม่ได้ลงในเอกสาร
+
 - Landing page render ได้ทั้ง `th` และ `en` และ switch ภาษาได้โดยไม่เสีย layout
 - Background มี grid pattern ที่ subtle และ contrast/อ่านง่ายบน dark theme
 - Hero มี typing role effect ที่หยุดได้เมื่อ reduced motion และแสดง static phrase ที่อ่านได้เสมอ
@@ -205,6 +216,7 @@ Production ใช้ MySQL 8.0+. Local/test ใช้ SQLite ได้ แต่
 - CORS, secrets, error masking และ security headers ถูกตรวจด้วย automated tests หรือ integration checks
 - Frontend build/lint และ backend tests ผ่านก่อน handoff ให้ Gemini
 - ตรวจ performance ด้วย production build และยืนยันว่า mobile/reduced-motion ไม่โหลดหรือไม่รัน 3D animation loop
+- เปิด `E:\portfolio\CONTEXT.md` และ `E:\portfolio\README.md` แล้วสามารถเริ่มทั้งสอง service และเข้าใจ contact request flow ได้โดยไม่ต้องเดา command หรือ path
 
 ## Scope Boundaries
 
