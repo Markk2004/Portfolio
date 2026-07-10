@@ -4,12 +4,17 @@ import { useRef, useState } from 'react';
 import CertificatesEmptyState from './CertificatesEmptyState';
 import Projects from './Projects';
 import Skills from './Skills';
+import ProjectDetails from '../ui/ProjectDetails';
 
 const tabs = ['projects', 'certificates', 'tech-stack'];
 
 export default function PortfolioTabs({ projects, skills, content }) {
   const [activeTab, setActiveTab] = useState('projects');
+  const [selectedProjectSlug, setSelectedProjectSlug] = useState(null);
   const tabRefs = useRef({});
+
+  const selectedProject = projects.find((p) => p.slug === selectedProjectSlug);
+  const closeDetails = () => setSelectedProjectSlug(null);
   const labels = {
     projects: content.ui.nav.projects,
     certificates: content.ui.nav.certificates,
@@ -59,7 +64,7 @@ export default function PortfolioTabs({ projects, skills, content }) {
           ))}
         </div>
         <div id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden={activeTab !== 'projects'}>
-          <Projects projects={projects} content={content} />
+          <Projects projects={projects} content={content} onViewDetails={setSelectedProjectSlug} />
         </div>
         <div id="panel-certificates" role="tabpanel" aria-labelledby="tab-certificates" hidden={activeTab !== 'certificates'}>
           <CertificatesEmptyState content={content} />
@@ -68,6 +73,13 @@ export default function PortfolioTabs({ projects, skills, content }) {
           <Skills skills={skills} content={content} />
         </div>
       </div>
+
+      {/* ProjectDetails renders OUTSIDE the hidden panel so fixed position works correctly */}
+      <ProjectDetails
+        project={selectedProject}
+        content={content}
+        onClose={closeDetails}
+      />
     </section>
   );
 }
