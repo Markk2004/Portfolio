@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import WelcomeIntro from '@/components/WelcomeIntro';
+import WelcomeIntro from '@/components/layout/WelcomeIntro';
 
 jest.useFakeTimers();
 

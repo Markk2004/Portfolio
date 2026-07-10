@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import PortfolioTabs from '@/components/PortfolioTabs';
-import { getLocaleContent } from '@/lib/portfolio-content';
+import PortfolioTabs from '@/components/sections/PortfolioTabs';
+import { getLocaleContent } from '@/lib/content/portfolio-content';
 
 test('switches to the certificates empty state', () => {
   const content = getLocaleContent('en');

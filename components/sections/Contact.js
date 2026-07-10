@@ -1,4 +1,4 @@
-import ContactForm from './ContactForm';
+import ContactForm from '../ui/ContactForm';
 
 export default function Contact({ locale, content }) {
   const contact = content.contact;

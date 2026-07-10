@@ -1,16 +1,16 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import WelcomeIntro from '@/components/WelcomeIntro';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import PortfolioTabs from '@/components/PortfolioTabs';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import CustomCursor from '@/components/CustomCursor';
-import Reveal from '@/components/Reveal';
-import { getLocaleContent } from '@/lib/portfolio-content';
+import WelcomeIntro from '@/components/layout/WelcomeIntro';
+import Header from '@/components/layout/Header';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import PortfolioTabs from '@/components/sections/PortfolioTabs';
+import Contact from '@/components/sections/Contact';
+import Footer from '@/components/layout/Footer';
+import CustomCursor from '@/components/layout/CustomCursor';
+import Reveal from '@/components/ui/Reveal';
+import { getLocaleContent } from '@/lib/content/portfolio-content';
 
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false);

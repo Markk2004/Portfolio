@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import InteractiveIdCard from '@/components/InteractiveIdCard';
+import InteractiveIdCard from '@/components/3d/InteractiveIdCard';
 
 test('keeps an accessible text alternative for the ID card', () => {
   render(<InteractiveIdCard profile="Juggit Khunkhaw" role="Frontend Developer" ctaHref="#contact" />);

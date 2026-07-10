@@ -1,4 +1,4 @@
-import { getLocaleContent } from '@/lib/portfolio-content';
+import { getLocaleContent } from '@/lib/content/portfolio-content';
 
 test('returns both supported locales and exactly three curated projects', () => {
   expect(getLocaleContent('en').locale).toBe('en');

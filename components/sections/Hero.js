@@ -1,5 +1,5 @@
-import TypingRole from '@/components/TypingRole';
-import { roles } from '@/lib/roles';
+import TypingRole from '@/components/ui/TypingRole';
+import { roles } from '@/lib/content/roles';
 
 export default function Hero({ content }) {
   return (

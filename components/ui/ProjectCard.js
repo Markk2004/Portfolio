@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { getTechIcon } from '@/lib/tech-icons';
+import { getTechIcon } from '@/lib/content/tech-icons';
 
 export default function ProjectCard({ project, content }) {
   const [imgSrc, setImgSrc] = useState(project.image || `/images/projects/${project.slug}.png`);

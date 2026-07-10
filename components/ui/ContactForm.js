@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { validateContactForm } from '@/lib/validation';
+import { validateContactForm } from '@/lib/forms/validation';
 
 export default function ContactForm({ locale, content }) {
   const formContent = content.contact.form;

@@ -1,4 +1,4 @@
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../ui/ProjectCard';
 
 export default function Projects({ projects, content }) {
   return (

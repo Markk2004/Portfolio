@@ -1,4 +1,4 @@
-import SkillBadge from './SkillBadge';
+import SkillBadge from '../ui/SkillBadge';
 
 export default function Skills({ skills, content }) {
   return (

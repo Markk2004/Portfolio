@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { getTechIcon } from '@/lib/tech-icons';
+import { getTechIcon } from '@/lib/content/tech-icons';
 
 export default function SkillBadge({ skill }) {
   const normalizedKey = skill.name.toLowerCase();
