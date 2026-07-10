@@ -1,3 +1,6 @@
+import TypingRole from '@/components/TypingRole';
+import { roles } from '@/lib/roles';
+
 export default function Hero({ content }) {
   return (
     <section id="hero" className="relative flex min-h-[80vh] items-center justify-center py-20 px-4 md:px-8">
@@ -15,7 +18,7 @@ export default function Hero({ content }) {
           </span>
         </h1>
         <h2 className="text-2xl md:text-3xl font-bold text-gray-300 mb-6">
-          {content.hero.title}
+          <TypingRole phrases={roles[content.locale] || roles.en} />
         </h2>
         <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
           {content.hero.description}

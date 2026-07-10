@@ -5,19 +5,25 @@ import { useEffect, useRef, useState } from 'react';
 export default function WelcomeIntro({ onComplete }) {
   const completedRef = useRef(false);
   const [visible, setVisible] = useState(true);
+  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!completedRef.current) {
         completedRef.current = true;
-        setVisible(false);
-        if (onComplete) {
-          onComplete();
-        }
+        setExiting(true);
+        onComplete?.();
       }
-    }, 1200); // 1.2s (within 1-1.5s spec)
+    }, 1200);
 
-    return () => clearTimeout(timer);
+    const exitTimer = setTimeout(() => {
+      setVisible(false);
+    }, 1700);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(exitTimer);
+    };
   }, [onComplete]);
 
   if (!visible) return null;
@@ -28,7 +34,7 @@ export default function WelcomeIntro({ onComplete }) {
       aria-modal="true"
       aria-label="Welcome Introduction"
       aria-live="polite"
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B0F14] text-white transition-opacity duration-500 ease-out"
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B0F14] text-white transition-all duration-500 ease-out ${exiting ? 'opacity-0 translate-y-[-8px]' : 'opacity-100'}`}
     >
       <div className="text-center px-4">
         <h1 className="text-xs md:text-sm font-semibold tracking-[0.3em] text-[#06B6D4] uppercase mb-3">

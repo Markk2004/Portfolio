@@ -1,3 +1,5 @@
+import ContactForm from './ContactForm';
+
 export default function Contact({ locale, content }) {
   const contact = content.contact;
   
@@ -13,7 +15,7 @@ export default function Contact({ locale, content }) {
           <p>{contact.subtitle}</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto mb-10">
           {/* Phone Card */}
           <a 
             href="tel:082-6610469"
@@ -46,6 +48,7 @@ export default function Contact({ locale, content }) {
             <p className="text-lg font-bold text-white break-all">jiggtkk@gmail.com</p>
           </a>
         </div>
+        <ContactForm locale={locale} content={content} />
       </div>
     </section>
   );

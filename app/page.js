@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import WelcomeIntro from '@/components/WelcomeIntro';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -9,6 +9,8 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CustomCursor from '@/components/CustomCursor';
+import Reveal from '@/components/Reveal';
 import { getLocaleContent } from '@/lib/portfolio-content';
 
 export default function Home() {
@@ -17,6 +19,7 @@ export default function Home() {
   const mainHeadingRef = useRef(null);
 
   const content = getLocaleContent(locale);
+  const completeIntro = useCallback(() => setIntroComplete(true), []);
 
   useEffect(() => {
     if (introComplete && mainHeadingRef.current) {
@@ -26,10 +29,11 @@ export default function Home() {
 
   return (
     <>
-      <WelcomeIntro onComplete={() => setIntroComplete(true)} />
+      <CustomCursor />
+      <WelcomeIntro onComplete={completeIntro} />
       
       <div 
-        className={`flex flex-col min-h-screen transition-opacity duration-700 ease-in-out ${
+        className={`site-background flex flex-col min-h-screen transition-opacity duration-700 ease-in-out ${
           introComplete ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden pointer-events-none'
         }`}
         aria-hidden={!introComplete}
@@ -40,10 +44,10 @@ export default function Home() {
           <div ref={mainHeadingRef} tabIndex={-1} className="focus:outline-none" aria-label="Main Portfolio Content">
             <Hero content={content} />
           </div>
-          <About content={content} />
-          <Skills skills={content.skills} content={content} />
-          <Projects projects={content.projects} content={content} />
-          <Contact locale={locale} content={content} />
+          <Reveal><About content={content} /></Reveal>
+          <Reveal delay={80}><Skills skills={content.skills} content={content} /></Reveal>
+          <Reveal delay={120}><Projects projects={content.projects} content={content} /></Reveal>
+          <Reveal delay={160}><Contact locale={locale} content={content} /></Reveal>
         </main>
 
         <Footer content={content} />
