@@ -34,7 +34,7 @@ export default function WelcomeIntro({ onComplete }) {
       aria-modal="true"
       aria-label="Welcome Introduction"
       aria-live="polite"
-      className={`welcome-intro fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B0F14] text-white transition-all duration-500 ease-out ${exiting ? 'opacity-0 translate-y-[-8px]' : 'opacity-100'}`}
+      className={`welcome-intro fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#05070A] text-white transition-all duration-500 ease-out ${exiting ? 'opacity-0 translate-y-[-8px]' : 'opacity-100'}`}
     >
       <div className="text-center px-4">
         <h1 className="text-xs md:text-sm font-semibold tracking-[0.3em] text-[#06B6D4] uppercase mb-3">

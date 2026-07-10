@@ -26,7 +26,7 @@ export default function Header({ locale, content, onLocaleChange }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#0B0F14]/82 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-700/70 bg-[#05070A]/88 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4 md:px-8">
         <a href="#hero" className="inline-flex min-h-11 items-center text-xl font-bold text-white transition-colors hover:text-[#06B6D4]">
           JK<span className="text-[#06B6D4]">.</span>
@@ -76,7 +76,7 @@ export default function Header({ locale, content, onLocaleChange }) {
       {mobileMenuOpen && (
         <nav
           id="mobile-navigation"
-          className="space-y-3 border-t border-slate-800 bg-[#0B0F14] px-4 py-4 md:hidden"
+          className="space-y-3 border-t border-slate-800 bg-[#05070A] px-4 py-4 md:hidden"
         >
           {menuItems.map((item) => (
             <a

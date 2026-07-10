@@ -3,7 +3,7 @@
 export default function LanguageSwitcher({ locale, onChange }) {
   return (
     <div 
-      className="flex items-center space-x-1 rounded-lg border border-slate-800 bg-[#111827] p-1" 
+      className="flex items-center space-x-1 rounded-lg border border-slate-700/80 bg-[#0D1219] p-1" 
       role="group" 
       aria-label="Language Selector"
     >

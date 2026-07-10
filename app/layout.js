@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${outfit.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#0B0F14] text-[#F3F4F6]">
+      <body className="min-h-full flex flex-col bg-[#05070A] text-[#F3F4F6]">
         {children}
       </body>
     </html>

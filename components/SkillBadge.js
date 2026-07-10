@@ -11,7 +11,7 @@ export default function SkillBadge({ skill }) {
 
   return (
     <div className="glass-card flex min-h-20 items-center space-x-3 rounded-lg px-5 py-4 transition duration-200 hover:-translate-y-1 hover:border-[#06B6D4]/50">
-      <div className="flex h-10 w-10 shrink-0 select-none items-center justify-center rounded-lg bg-[#0B0F14]">
+      <div className="flex h-10 w-10 shrink-0 select-none items-center justify-center rounded-lg bg-[#05070A]">
         {imgError ? (
           <span className="text-xs font-bold text-[#06B6D4]">
             {skill.name.substring(0, 2).toUpperCase()}

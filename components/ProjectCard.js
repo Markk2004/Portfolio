@@ -9,7 +9,7 @@ export default function ProjectCard({ project, content }) {
 
   return (
     <article className="glass-card flex h-full flex-col overflow-hidden rounded-lg transition duration-200 hover:-translate-y-1 hover:border-cyan-300/40">
-      <div className="relative aspect-video w-full overflow-hidden border-b border-slate-800 bg-[#0B0F14]">
+      <div className="relative aspect-video w-full overflow-hidden border-b border-slate-800 bg-[#05070A]">
         <Image
           src={imgSrc}
           alt={project.imageAlt || project.title}
@@ -33,7 +33,7 @@ export default function ProjectCard({ project, content }) {
               return (
                 <span
                   key={tech}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-[#0B0F14] px-2.5 py-1 text-[10px] font-medium text-[#67E8F9]"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-[#05070A] px-2.5 py-1 text-[10px] font-medium text-[#67E8F9]"
                 >
                   {iconUrl && (
                     <Image

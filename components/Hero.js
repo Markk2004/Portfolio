@@ -7,7 +7,9 @@ export default function Hero({ content }) {
     <section id="hero" className="relative flex min-h-[82dvh] items-center overflow-hidden px-4 py-16 md:px-8 md:py-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_24%,#06B6D420,transparent_38%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,#22C55E16,transparent_34%)]" aria-hidden="true" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0B0F14] to-transparent" aria-hidden="true" />
+      <div className="circuit-pattern absolute inset-0" aria-hidden="true" />
+      <div className="hero-scanline absolute left-[8%] right-[8%] top-[24%] h-px" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#05070A] to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="absolute right-[-5rem] top-1/2 hidden w-[42%] -translate-y-1/2 opacity-80 lg:block xl:right-0">
@@ -38,7 +40,7 @@ export default function Hero({ content }) {
           </a>
           <a
             href="#contact"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-slate-700 bg-[#111827]/70 px-8 py-3.5 text-center text-sm font-semibold text-gray-200 transition duration-200 hover:border-cyan-300/60 hover:bg-[#111827] hover:text-white active:scale-[0.98] sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-slate-700 bg-[#0D1219]/75 px-8 py-3.5 text-center text-sm font-semibold text-gray-200 transition duration-200 hover:border-cyan-300/60 hover:bg-[#111827] hover:text-white active:scale-[0.98] sm:w-auto"
           >
             {content.hero.ctaContact}
           </a>
