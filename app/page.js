@@ -34,10 +34,7 @@ export default function Home() {
       <WelcomeIntro onComplete={completeIntro} />
       
       <div 
-        className={`site-background flex flex-col min-h-screen transition-opacity duration-700 ease-in-out ${
-          introComplete ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden pointer-events-none'
-        }`}
-        aria-hidden={!introComplete}
+        className="site-background flex min-h-screen flex-col"
       >
         <Header locale={locale} content={content} onLocaleChange={setLocale} />
         

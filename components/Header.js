@@ -26,21 +26,19 @@ export default function Header({ locale, content, onLocaleChange }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-gray-900 bg-[#0B0F14]/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#0B0F14]/82 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between p-4 md:px-8">
-        {/* Logo / Name */}
-        <a href="#" className="text-xl font-bold tracking-tight text-white hover:text-[#06B6D4] transition-colors">
+        <a href="#hero" className="inline-flex min-h-11 items-center text-xl font-bold text-white transition-colors hover:text-[#06B6D4]">
           JK<span className="text-[#06B6D4]">.</span>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
           {menuItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`text-sm font-medium transition-colors ${activeSection === item.id ? 'text-cyan-300' : 'text-gray-300 hover:text-white'}`}
+              className={`inline-flex min-h-11 items-center text-sm font-medium transition-colors ${activeSection === item.id ? 'text-cyan-300' : 'text-gray-300 hover:text-white'}`}
             >
               {item.label}
             </a>
@@ -48,13 +46,12 @@ export default function Header({ locale, content, onLocaleChange }) {
           <LanguageSwitcher locale={locale} onChange={onLocaleChange} />
         </nav>
 
-        {/* Mobile Menu Button & Switcher */}
         <div className="flex items-center space-x-4 md:hidden">
           <LanguageSwitcher locale={locale} onChange={onLocaleChange} />
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-gray-400 hover:text-white focus:outline-none p-1 cursor-pointer"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-gray-300 transition hover:bg-slate-900 hover:text-white"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label="Toggle navigation menu"
@@ -76,11 +73,10 @@ export default function Header({ locale, content, onLocaleChange }) {
         </div>
       </div>
 
-      {/* Mobile Nav Drawer */}
       {mobileMenuOpen && (
         <nav
           id="mobile-navigation"
-          className="md:hidden border-t border-gray-900 bg-[#0B0F14] px-4 py-4 space-y-3"
+          className="space-y-3 border-t border-slate-800 bg-[#0B0F14] px-4 py-4 md:hidden"
         >
           {menuItems.map((item) => (
             <a
@@ -88,7 +84,7 @@ export default function Header({ locale, content, onLocaleChange }) {
               href={item.href}
               onClick={() => setMobileMenuOpen(false)}
               aria-current={activeSection === item.id ? 'page' : undefined}
-              className={`block rounded-lg px-3 py-2 text-base font-semibold transition-all ${activeSection === item.id ? 'bg-[#111827] text-cyan-300' : 'text-gray-300 hover:bg-[#111827] hover:text-white'}`}
+              className={`flex min-h-11 items-center rounded-lg px-3 text-base font-semibold transition-all ${activeSection === item.id ? 'bg-[#111827] text-cyan-300' : 'text-gray-300 hover:bg-[#111827] hover:text-white'}`}
             >
               {item.label}
             </a>

@@ -8,9 +8,8 @@ export default function ProjectCard({ project, content }) {
   const [imgSrc, setImgSrc] = useState(project.image || `/images/projects/${project.slug}.png`);
 
   return (
-    <div className="flex flex-col h-full bg-[#111827] border border-gray-850 rounded-2xl overflow-hidden shadow-lg hover:border-gray-700 transition-all duration-300">
-      {/* Project Thumbnail */}
-      <div className="relative aspect-video w-full bg-[#0B0F14] overflow-hidden border-b border-gray-900">
+    <article className="glass-card flex h-full flex-col overflow-hidden rounded-lg transition duration-200 hover:-translate-y-1 hover:border-cyan-300/40">
+      <div className="relative aspect-video w-full overflow-hidden border-b border-slate-800 bg-[#0B0F14]">
         <Image
           src={imgSrc}
           alt={project.imageAlt || project.title}
@@ -21,14 +20,12 @@ export default function ProjectCard({ project, content }) {
         />
       </div>
 
-      {/* Project Details */}
       <div className="flex flex-col flex-1 p-6">
         <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-        <p className="text-sm text-gray-400 mb-4">{project.summary}</p>
-        <p className="text-xs text-gray-500 mb-6 leading-relaxed line-clamp-4">{project.description}</p>
+        <p className="mb-4 text-sm leading-6 text-gray-300">{project.summary}</p>
+        <p className="mb-6 line-clamp-4 text-xs leading-6 text-gray-400">{project.description}</p>
         
         <div className="mt-auto space-y-6">
-          {/* Tech Stack */}
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tech) => {
               const normalized = tech.toLowerCase();
@@ -36,7 +33,7 @@ export default function ProjectCard({ project, content }) {
               return (
                 <span
                   key={tech}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-medium rounded bg-[#0B0F14] text-[#06B6D4] border border-gray-850"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-[#0B0F14] px-2.5 py-1 text-[10px] font-medium text-[#67E8F9]"
                 >
                   {iconUrl && (
                     <Image
@@ -55,13 +52,12 @@ export default function ProjectCard({ project, content }) {
             })}
           </div>
 
-          {/* Links */}
-          <div className="flex items-center space-x-4 pt-4 border-t border-gray-900">
+          <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-4">
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center text-sm font-semibold text-gray-300 hover:text-white transition-colors"
+              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-gray-300 transition-colors hover:text-white"
               aria-label={`${content.ui.common.viewGithub} for ${project.title}`}
             >
               <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -75,7 +71,7 @@ export default function ProjectCard({ project, content }) {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center text-sm font-semibold text-[#06B6D4] hover:text-[#06B6D4]/80 transition-colors"
+              className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-semibold text-[#67E8F9] transition-colors hover:text-white"
                 aria-label={`${content.ui.common.liveDemo} for ${project.title}`}
               >
                 <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -87,6 +83,6 @@ export default function ProjectCard({ project, content }) {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

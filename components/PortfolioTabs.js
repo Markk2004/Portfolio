@@ -27,13 +27,14 @@ export default function PortfolioTabs({ projects, skills, content }) {
   };
 
   return (
-    <section id="portfolio" className="border-t border-slate-900 px-4 py-24 md:px-8">
+    <section id="portfolio" className="border-t border-slate-900/80 px-4 py-24 md:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">{content.ui.nav.portfolio}</p>
-          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">{content.ui.portfolioTitle}</h2>
+          <p className="section-kicker">{content.ui.nav.portfolio}</p>
+          <h2 className="section-title">{content.ui.portfolioTitle}</h2>
+          <span className="section-rule" aria-hidden="true" />
         </div>
-        <div role="tablist" aria-label={content.ui.nav.portfolio} className="mx-auto mb-10 flex max-w-xl flex-wrap justify-center gap-2 rounded-2xl border border-slate-800 bg-slate-950/50 p-2">
+        <div role="tablist" aria-label={content.ui.nav.portfolio} className="mx-auto mb-10 flex max-w-xl flex-wrap justify-center gap-2 rounded-lg border border-slate-800 bg-slate-950/60 p-2">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -51,7 +52,7 @@ export default function PortfolioTabs({ projects, skills, content }) {
                 if (event.key === 'Home') { event.preventDefault(); selectTab(tabs[0]); tabRefs.current[tabs[0]]?.focus(); }
                 if (event.key === 'End') { event.preventDefault(); selectTab(tabs[tabs.length - 1]); tabRefs.current[tabs[tabs.length - 1]]?.focus(); }
               }}
-              className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${activeTab === tab ? 'bg-cyan-400/15 text-cyan-200' : 'text-slate-400 hover:text-white'}`}
+              className={`min-h-11 rounded-lg px-4 text-sm font-semibold transition duration-200 ${activeTab === tab ? 'bg-cyan-400/15 text-cyan-100 shadow-[inset_0_0_0_1px_rgba(103,232,249,0.28)]' : 'text-slate-400 hover:bg-slate-900 hover:text-white'}`}
             >
               {labels[tab]}
             </button>

@@ -4,44 +4,47 @@ import InteractiveIdCard from '@/components/InteractiveIdCard';
 
 export default function Hero({ content }) {
   return (
-    <section id="hero" className="relative flex min-h-[80vh] items-center justify-center py-20 px-4 md:px-8">
-      {/* Background radial gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#06B6D415,transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,#3B82F615,transparent_50%)]" />
+    <section id="hero" className="relative flex min-h-[82dvh] items-center overflow-hidden px-4 py-16 md:px-8 md:py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_24%,#06B6D420,transparent_38%)]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,#22C55E16,transparent_34%)]" aria-hidden="true" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0B0F14] to-transparent" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 text-center lg:grid-cols-[1.1fr_0.9fr] lg:text-left">
-        <div>
-        <p className="text-sm font-semibold tracking-[0.25em] text-[#06B6D4] uppercase mb-4">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
+        <div className="absolute right-[-5rem] top-1/2 hidden w-[42%] -translate-y-1/2 opacity-80 lg:block xl:right-0">
+          <InteractiveIdCard profile={content.hero.name} role={content.hero.title} ctaHref="#contact" />
+        </div>
+        <div className="max-w-3xl text-left">
+        <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#67E8F9]">
           {content.hero.greeting}
         </p>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-4">
+        <h1 className="mb-4 text-5xl font-extrabold leading-[0.95] text-white md:text-7xl">
           <span className="bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
             {content.hero.name}
           </span>
         </h1>
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-300 mb-6">
+        <h2 className="mb-6 text-2xl font-bold text-gray-200 md:text-3xl">
           <TypingRole phrases={roles[content.locale] || roles.en} />
         </h2>
-        <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="mb-10 max-w-2xl text-base leading-8 text-gray-300 md:text-lg">
           {content.hero.description}
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <a
-            href="#projects"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#3B82F6] text-white font-semibold text-sm shadow-lg hover:shadow-[#06B6D430] hover:scale-[1.02] active:scale-[0.98] transition-all text-center"
+            href="#portfolio"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-gradient-to-r from-[#06B6D4] via-[#3B82F6] to-[#22C55E] px-8 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-cyan-950/40 transition duration-200 hover:brightness-110 active:scale-[0.98] sm:w-auto"
           >
             {content.hero.ctaProjects}
           </a>
           <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-gray-850 bg-[#111827]/50 text-gray-300 font-semibold text-sm hover:bg-[#111827] hover:text-white hover:border-gray-700 hover:scale-[1.02] active:scale-[0.98] transition-all text-center"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-slate-700 bg-[#111827]/70 px-8 py-3.5 text-center text-sm font-semibold text-gray-200 transition duration-200 hover:border-cyan-300/60 hover:bg-[#111827] hover:text-white active:scale-[0.98] sm:w-auto"
           >
             {content.hero.ctaContact}
           </a>
         </div>
         </div>
-        <div className="mx-auto flex w-full justify-center lg:justify-end">
+        <div className="mx-auto mt-12 flex w-full max-w-[430px] justify-center lg:hidden">
           <InteractiveIdCard profile={content.hero.name} role={content.hero.title} ctaHref="#contact" />
         </div>
       </div>
