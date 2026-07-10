@@ -31,6 +31,9 @@
 - Footer: GitHub link, copyright และ mobile-friendly navigation
 - Responsive: hero/project grid แบบหลายคอลัมน์บน desktop และ single-column stack บน mobile; mobile header เป็น collapsible navigation
 - Images: project images อยู่ใน `front/public/images/projects` หรือใช้ URL ที่กำหนดใน content config; ทุกภาพมี alt text สองภาษาและ fallback placeholder
+- Page entry: แสดง Short branded intro ก่อนเข้า Hero โดยใช้ข้อความ `WELCOME TO MY PORTFOLIO`, ชื่อ/โลโก้ `Juggit Khunkhaw`, dark surface และ cyan/blue accent
+- Welcome intro ใช้เวลา 1–1.5 วินาที แล้ว fade/slide เข้า Hero; เป็น visual transition ไม่รอ API และไม่ทำให้ data loading ช้าลง
+- ใช้ CSS animation เป็นหลัก ไม่เพิ่ม animation dependency และรองรับ `prefers-reduced-motion` ด้วย transition สั้นหรือข้าม animation
 
 ## Internationalization
 
@@ -68,6 +71,15 @@ Laravel เป็น API ขนาดเล็กสำหรับ `POST /api/c
 3. User submit contact form; frontend validate และส่ง JSON ไป Laravel
 4. Laravel validate ซ้ำ, normalize input, apply rate limit, persist message แล้วคืน success/error JSON
 5. Frontend reset form เมื่อสำเร็จ หรือคงค่าฟอร์มไว้เมื่อผิดพลาด
+
+### Welcome intro flow
+
+1. Initial render แสดง `WelcomeIntro` แบบเต็ม viewport และไม่เปิด main content ให้ focus ก่อนจบ intro
+2. แสดงชื่อ/โลโก้, ข้อความ `WELCOME TO MY PORTFOLIO` และ subtle progress line บน dark theme
+3. หลัง 1–1.5 วินาทีเรียก `onComplete`
+4. `WelcomeIntro` fade out และทำให้ main portfolio visible/focusable
+5. หาก `prefers-reduced-motion` เป็นจริง ให้ใช้ transition สั้นหรือแสดง/ซ่อนโดยไม่เคลื่อนไหว
+6. Component ต้องไม่ loop จาก re-render และต้องไม่ทำให้ screen reader อ่านข้อความซ้ำซ้อน
 
 ## Core Logic
 
@@ -114,6 +126,9 @@ Production ใช้ MySQL 8.0+. Local/test ใช้ SQLite ได้ แต่
 ## Testing and Acceptance Criteria
 
 - Landing page render ได้ทั้ง `th` และ `en` และ switch ภาษาได้โดยไม่เสีย layout
+- เปิดหน้าเว็บแล้วเห็น branded welcome intro เต็ม viewport ด้วยข้อความ `WELCOME TO MY PORTFOLIO` และชื่อ `Juggit Khunkhaw`
+- Welcome intro จบภายใน 1–1.5 วินาที แล้วเข้า Hero ได้โดยไม่รอ API และไม่ทำให้ main content สูญเสีย keyboard focus
+- `prefers-reduced-motion` ลดหรือข้าม animation ได้ และ intro ไม่ loop เมื่อ component re-render
 - Responsive layout ผ่าน desktop/mobile viewport และ keyboard navigation พื้นฐาน
 - Project cards แสดง 3 repositories ที่กำหนด พร้อม stack logos, GitHub links และ demo link เฉพาะรายการที่มี
 - รูป profile/project มี fallback และ alt text ครบ
