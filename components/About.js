@@ -13,7 +13,7 @@ export default function About({ content }) {
           <div className="md:col-span-5 flex justify-center">
             <div className="group relative h-64 w-64 overflow-hidden rounded-lg border border-slate-800 bg-[#111827] shadow-xl md:h-80 md:w-80">
               <Image
-                src="/images/profile/profile-placeholder.svg"
+                src="/images/profile/profile-1.jfif"
                 alt={content.hero.name}
                 fill
                 sizes="(max-width: 768px) 256px, 320px"
