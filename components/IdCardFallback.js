@@ -14,7 +14,7 @@ export default function IdCardFallback({ profile, role, ctaHref = '#contact' }) 
               src="/images/profile/profile-2.jfif"
               alt={`${profile} avatar`}
               fill
-              className="object-cover"
+              className="object-cover object-top scale-[1.08]"
             />
           </div>
           <div className="id-card-chip" aria-hidden="true">JK</div>
