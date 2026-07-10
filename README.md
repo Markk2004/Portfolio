@@ -7,20 +7,25 @@ Workspace context: [`E:\portfolio\CONTEXT.md`](E:/portfolio/CONTEXT.md). Approve
 ## Features
 - **Welcome Intro**: A 1.2-second styled branded loading sequence.
 - **Bilingual Interface**: Seamless switching between Thai (TH) and English (EN) using local dictionary files.
-- **Project Grid**: Showcases 3 curated projects (`hospital-app`, `InvestingNew`, `investerBack`) fetched from static JSON metadata with technology logos.
+- **Project Grid**: Showcases 3 curated projects (`hospital-app`, `InvestingNew`, `investerBack`) from local static metadata with technology logos.
 - **Responsive Layout**: Fluid UI optimized for mobile, tablet, and desktop viewports.
 - **Contact Form**: Bilingual validated form posts JSON to the Laravel API and stores messages in `contact_messages`.
 - **Interactive UI**: Grid background, glass cards, typing role, scroll reveal, fine-pointer cursor, sticky navigation, and keyboard-accessible portfolio tabs.
 - **3D ID Card**: React Three Fiber/Three.js on desktop fine pointers; CSS/static fallback for touch, mobile, and reduced motion.
 
 ## Project Structure
-- `app/`: Next.js App Router core files (root page and layouts).
-- `components/`: Modular React view parts (Intro, Header, Sections, Badge, Cards).
-- `lib/locales/`: Localization files (`th.js`, `en.js`).
-- `lib/portfolio-content.js`: Unified static metadata repository for projects and skills.
-- `lib/tech-icons.js`: Shared Devicon mapping with initials fallback.
-- `components/`: `InteractiveIdCard`, `TypingRole`, `CustomCursor`, `Reveal`, and `PortfolioTabs` are isolated client interactions; visual state must not own contact/content data.
-- `public/`: SVG icons and placeholder image fallback graphics.
+- `app/`: Next.js App Router shell and page composition.
+- `components/3d/`: Desktop R3F ID Card and CSS/static fallback.
+- `components/layout/`: Header, footer, locale switcher, cursor, and welcome intro.
+- `components/sections/`: Hero, About, Contact, Projects, Skills, portfolio tabs, and certificate empty state.
+- `components/ui/`: Contact form, cards, badges, reveal wrapper, and typing role UI.
+- `hooks/`: Browser capability, reduced-motion, and reveal hooks.
+- `lib/content/`: Portfolio data, role phrases, and technology icon mapping.
+- `lib/i18n/`: Thai and English dictionaries (`th.js`, `en.js`).
+- `lib/forms/`: Client-side contact validation.
+- `public/`: Canonical profile/project images and placeholder graphics.
+
+Client interactions remain isolated from portfolio/contact data. Visual state must not own API or content state.
 
 ## Quick Start
 
